@@ -12,7 +12,7 @@ You need Node 20+, git, and an empty **private** GitHub repo for your memory (fo
 
 ```bash
 npm i -g https://github.com/ajeetsk/taught-releases/releases/latest/download/taught.tgz
-taught setup --remote git@github.com:you/taught-memory.git --repos ~/code
+taught setup --remote git@github.com:you/taught-memory.git
 taught doctor
 ```
 

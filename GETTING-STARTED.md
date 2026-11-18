@@ -19,18 +19,18 @@ This page takes about 10 minutes: install, choosing what to keep, a first test, 
 ```bash
 npm i -g https://github.com/ajeetsk/taught-releases/releases/latest/download/taught.tgz
 
-taught setup --remote git@github.com:you/taught-memory.git --repos ~/code
+taught setup --remote git@github.com:you/taught-memory.git
 ```
 
 - `--remote`: your memory repo. Use the same form (SSH or https) you use with `git clone`.
-- `--repos`: the folders that hold your code checkouts. You can list several (`--repos ~/code ~/work`). If you leave it out, Taught looks in `~/Repos`.
+- **Where your code is:** you don't have to say. Taught finds the folders in your home folder that hold git repos, whatever they are called, and tells you what it found. It doesn't look in hidden folders or in Documents, Desktop and Downloads. To name the folders yourself, add `--repos ~/code ~/work`, or change them anytime on the Projects page.
 
 Setup works through these steps and prints a line for each:
 
 | Step | What it does |
 |---|---|
 | Memory tree | Clones your memory repo into `~/.taught` |
-| Your code on this device | Finds your repos. It registers nothing: you choose what Taught keeps memory for (step 2) |
+| Your code on this device | Finds the folders that hold your git repos. It registers nothing: you choose what Taught keeps memory for (step 2) |
 | Claude Code hooks | So Claude syncs when a session starts and when it saves a memory |
 | Background sync | Every 5 minutes and at login (macOS) |
 | First sync | Writes every agent's files. Claude Code's own saved memories are imported for the projects you choose |
@@ -93,7 +93,7 @@ On the second machine, install Taught, then run the same setup with the **same m
 
 ```bash
 npm i -g https://github.com/ajeetsk/taught-releases/releases/latest/download/taught.tgz
-taught setup --remote <the same memory repo> --repos <where your code is on this machine>
+taught setup --remote <the same memory repo>
 ```
 
 Folder layouts don't have to match. Taught recognises a repo by its git remote, not its path, and SSH and https clones of the same repo count as one repo.
