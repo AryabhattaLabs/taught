@@ -200,19 +200,21 @@ Before Taught first changes a file of yours, it keeps a copy in `~/.taught-local
 
 ## Tell us how it went
 
-This is what the beta is for. Most useful to us:
+This is what the beta is for. Post on the [issues page](https://github.com/ajeetsk/taught-releases/issues/new/choose). It has two forms: **Something went wrong** and **Feedback**. Most useful to us:
 
 1. **Did a correction reach another agent or laptop?** What did you teach, and where did it show up (or not)?
 2. **Anything confusing in setup**, or anything Taught did that you didn't expect.
 3. **Which agents you use**, especially Cursor, Antigravity or Gemini CLI.
 4. **After a week:** is your memory useful, or noisy? Did an agent act on an old or wrong rule?
 
-When reporting a problem, run:
+When something goes wrong, run:
 
 ```bash
 taught feedback
 ```
 
-It copies a setup report to your clipboard: versions and checks, never your memory. Paste it with what you did, what you expected and what happened.
+It copies a setup report to your clipboard: versions and checks, never your memory, and with any password or token in a URL hidden. Paste it into the form.
+
+**Issues are public.** Describe your rules and projects generically ("a rule about our API", "a work repo"). Don't paste memory content, client names or private repo names.
 
 This is a private beta: please don't share the install link. See [TERMS.md](TERMS.md).

@@ -1,0 +1,29 @@
+name: Something went wrong
+description: Setup failed, a rule didn't reach an agent or laptop, or Taught did something you didn't expect.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **This page is public.** Don't paste memory content, client or company names, or private repo names. Describe them generically ("a rule about our API", "a work repo").
+  - type: textarea
+    id: did
+    attributes:
+      label: What you did
+      placeholder: "Told Claude Code a rule in a work repo, then opened Codex on my other laptop."
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected, and what happened
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: Output of `taught feedback`
+      description: It copies a setup report to your clipboard (versions and checks, never memory content). Check it before posting.
+      render: text
+    validations:
+      required: true

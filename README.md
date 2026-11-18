@@ -46,6 +46,6 @@ npm uninstall -g taught
 
 ## Feedback
 
-`taught feedback` copies a setup report (versions and checks, never your memory) to paste with your note: what you did, what you expected, what happened.
+Post on the [issues page](https://github.com/ajeetsk/taught-releases/issues/new/choose). `taught feedback` copies a setup report (versions and checks, never your memory) to paste into the form. Issues are public: describe your rules and projects generically.
 
 This is a private beta: see TERMS.md.

@@ -1,0 +1,26 @@
+name: Feedback
+description: How Taught is working for you, what's confusing, what you'd want next.
+labels: [feedback]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **This page is public.** Don't paste memory content, client or company names, or private repo names.
+  - type: dropdown
+    id: agents
+    attributes:
+      label: Which agents do you use with Taught?
+      multiple: true
+      options: [Claude Code, Codex, Cursor, Antigravity, Gemini CLI, Other]
+  - type: dropdown
+    id: reached
+    attributes:
+      label: Did a correction you gave one agent reach another agent or laptop?
+      options: [Yes, Sometimes, No, Haven't tried yet]
+  - type: textarea
+    id: notes
+    attributes:
+      label: Tell us more
+      description: What worked, what was confusing, whether your memory feels useful or noisy, what you'd want next.
+    validations:
+      required: true
