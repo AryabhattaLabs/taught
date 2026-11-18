@@ -12,6 +12,7 @@ This page takes about 10 minutes: install, a first test, a second device, and wh
 - Node 20 or newer, and git.
 - At least one of: Claude Code, Codex, Cursor, Antigravity or Gemini CLI.
 - An **empty private GitHub repo** for your memory, for example `you/taught-memory`. Create it now, with no README. Your memory lives there, and only people with access to it can read it. Don't share it with anyone: Taught has no accounts, so anyone with access to this repo is treated as you.
+  - **Using Taught for work?** You can create this repo in your company's GitHub org instead, for example `company/taught-yourname`, so company knowledge stays on company accounts. Each person still needs their own repo. Taught doesn't share memory between people yet.
 
 ## 1. Install and set up (5 minutes)
 
@@ -217,4 +218,4 @@ It copies a setup report to your clipboard: versions and checks, never your memo
 
 **Issues are public.** Describe your rules and projects generically ("a rule about our API", "a work repo"). Don't paste memory content, client names or private repo names.
 
-This is a private beta: please don't share the install link. See [TERMS.md](TERMS.md).
+This is a private beta: you may share it with people on your own team, but not beyond. See [TERMS.md](TERMS.md).

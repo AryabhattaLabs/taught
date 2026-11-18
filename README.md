@@ -8,7 +8,7 @@ Taught keeps what you teach your coding agents (Claude Code, Codex, Cursor, Anti
 
 ## Start
 
-You need Node 20+, git, and an empty **private** GitHub repo for your memory (for example `you/taught-memory`).
+You need Node 20+, git, and an empty **private** GitHub repo for your memory (for example `you/taught-memory`). For work, it can be a private repo in your company's GitHub org, one per person.
 
 ```bash
 npm i -g https://github.com/ajeetsk/taught-releases/releases/latest/download/taught.tgz
@@ -48,4 +48,4 @@ npm uninstall -g taught
 
 Post on the [issues page](https://github.com/ajeetsk/taught-releases/issues/new/choose). `taught feedback` copies a setup report (versions and checks, never your memory) to paste into the form. Issues are public: describe your rules and projects generically.
 
-This is a private beta: see TERMS.md.
+This is a private beta: you may share it with people on your own team, but not beyond. See TERMS.md.
