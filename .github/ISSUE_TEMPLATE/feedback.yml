@@ -11,12 +11,12 @@ body:
     attributes:
       label: Which agents do you use with Taught?
       multiple: true
-      options: [Claude Code, Codex, Cursor, Antigravity, Gemini CLI, Other]
+      options: ["Claude Code", "Codex", "Cursor", "Antigravity", "Gemini CLI", "Other"]
   - type: dropdown
     id: reached
     attributes:
       label: Did a correction you gave one agent reach another agent or laptop?
-      options: [Yes, Sometimes, No, Haven't tried yet]
+      options: ["Yes", "Sometimes", "No", "Haven't tried yet"]
   - type: textarea
     id: notes
     attributes:
