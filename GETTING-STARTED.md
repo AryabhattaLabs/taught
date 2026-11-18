@@ -55,7 +55,7 @@ There is one row per folder of code on this laptop. A project is matched by its 
 |---|---|
 | **Default memory repo** | Synced to every device that uses your memory repo. |
 | **This laptop only** | Agents on this laptop get it; it is never pushed anywhere. This is also what happens in a folder you haven't chosen yet: a rule recorded there is kept on this laptop, never lost and never synced. |
-| **A separate location** | Its own git repo or synced folder, for memory that must stay apart (one client's, say). See [Keeping a project's memory apart](#keeping-a-projects-memory-apart). |
+| **A separate location** | Its own private git repo, for memory that must stay apart (one client's, say). See [Keeping a project's memory apart](#keeping-a-projects-memory-apart). |
 | **Off** | Taught records nothing there and writes no files there. |
 
 - **A folder becomes one project**, named after the folder. You can rename it, and open the row to leave out repos that don't belong (a third-party clone starts unticked).
@@ -129,19 +129,19 @@ The same list is in `taught ui`.
 
 ## Keeping a project's memory apart
 
-Your default memory repo holds everything you choose to keep in it, on every device that uses it. When a project's memory must not be there (a client's, or your employer's), keep it in **its own location**: a separate private git repo, or a folder that something else syncs (Dropbox, iCloud, a client's share).
+Your default memory repo holds everything you choose to keep in it, on every device that uses it. When a project's memory must not be there (a client's, or your employer's), keep it in **its own location**: a separate private git repo.
 
 ```bash
 taught location add git@github.com:client/taught-memory.git --name "Client memory"
 taught project add client --from ~/code/client --memory "Client memory"
 ```
 
-Or on the Projects page: *Add a git repo or folder…*, then choose it under "Kept in".
+Or on the Projects page: *Add a git repo…*, then choose it under "Kept in".
 
 - **Nothing about that project is written to your default memory repo**: not its rules, not its name, not where it is kept. A rule you later make personal out of it keeps no trace of where it came from.
 - **Each laptop attaches the location once** (`taught location add <the same address>`). It then sees the projects kept there.
-- **The repo or folder must be empty, or already hold Taught memory.** Anything else is refused, so memory can never be pushed into a code repo by mistake.
-- **What others add waits for you.** If someone else can write to that repo or folder, a project or repo they add isn't used on your laptop until you accept it on the Projects page.
+- **The repo must be empty, or already hold Taught memory.** Anything else is refused, so memory can never be pushed into a code repo by mistake.
+- **What others add waits for you.** If someone else can write to that repo, a project or repo they add isn't used on your laptop until you accept it on the Projects page.
 - **Moving a project** between places is a choice under "Kept in". Taught copies it, checks it arrived, and only then removes the old copy.
 
 ## Your agents
