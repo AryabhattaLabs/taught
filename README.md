@@ -1,4 +1,4 @@
-# Taught (private beta)
+# Taught (beta)
 
 Correct one agent once. Every agent on every machine remembers.
 
@@ -48,4 +48,4 @@ npm uninstall -g taught
 
 Post on the [issues page](https://github.com/ajeetsk/taught-releases/issues/new/choose). `taught feedback` copies a setup report (versions and checks, never your memory) to paste into the form. Issues are public: describe your rules and projects generically.
 
-This is a private beta: you may share it with people on your own team, but not beyond. See TERMS.md.
+This is an invite-only beta: you may share it with people on your own team, but not beyond. See TERMS.md.

@@ -1,4 +1,4 @@
-# Getting started with Taught (private beta)
+# Getting started with Taught (beta)
 
 **Correct one agent once. Every agent on every machine remembers.**
 
@@ -218,4 +218,4 @@ It copies a setup report to your clipboard: versions and checks, never your memo
 
 **Issues are public.** Describe your rules and projects generically ("a rule about our API", "a work repo"). Don't paste memory content, client names or private repo names.
 
-This is a private beta: you may share it with people on your own team, but not beyond. See [TERMS.md](TERMS.md).
+This is an invite-only beta: you may share it with people on your own team, but not beyond. See [TERMS.md](TERMS.md).
