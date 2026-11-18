@@ -1,4 +1,4 @@
-# Taught private beta: terms (draft)
+# Taught private beta: terms
 
 Copyright (c) 2026 Ajeet. All rights reserved.
 
