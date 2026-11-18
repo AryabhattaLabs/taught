@@ -4,7 +4,7 @@
 
 You tell Claude Code "we never call the payments API from the frontend". Tomorrow Codex, on your other laptop, already knows. Taught keeps what you teach your coding agents in a private git repo you own, and writes it into the files each agent already reads.
 
-This page takes about 10 minutes: install, a first test, a second device, and what to tell us.
+This page takes about 10 minutes: install, choosing what to keep, a first test, a second device, and what to tell us.
 
 ## What you need
 
@@ -12,7 +12,7 @@ This page takes about 10 minutes: install, a first test, a second device, and wh
 - Node 20 or newer, and git.
 - At least one of: Claude Code, Codex, Cursor, Antigravity or Gemini CLI.
 - An **empty private GitHub repo** for your memory, for example `you/taught-memory`. Create it now, with no README. Your memory lives there, and only people with access to it can read it. Don't share it with anyone: Taught has no accounts, so anyone with access to this repo is treated as you.
-  - **Using Taught for work?** You can create this repo in your company's GitHub org instead, for example `company/taught-yourname`, so company knowledge stays on company accounts. Each person still needs their own repo. Taught doesn't share memory between people yet.
+  - **Using Taught for work?** Keep work memory apart from your own: put it in a separate private repo in your company's GitHub org (see [Keeping a project's memory apart](#keeping-a-projects-memory-apart)), so company knowledge stays on company accounts. Each person needs their own repo: Taught doesn't share memory between people yet.
 
 ## 1. Install and set up (5 minutes)
 
@@ -30,10 +30,10 @@ Setup works through these steps and prints a line for each:
 | Step | What it does |
 |---|---|
 | Memory tree | Clones your memory repo into `~/.taught` |
-| Your code on this device | Finds your repos and groups them into projects (below) |
+| Your code on this device | Finds your repos. It registers nothing: you choose what Taught keeps memory for (step 2) |
 | Claude Code hooks | So Claude syncs when a session starts and when it saves a memory |
 | Background sync | Every 5 minutes and at login (macOS) |
-| First sync | Imports what Claude Code already remembers on this machine, then writes every agent's files |
+| First sync | Writes every agent's files. Claude Code's own saved memories are imported for the projects you choose |
 
 Then check it:
 
@@ -43,20 +43,41 @@ taught doctor
 
 Every line should be ✓, or · (information only). If something shows ✗, it says what to run.
 
-**How your repos become projects.** Repos in one folder whose names contain the folder's name form one project: `~/code/acme/acme-api` and `~/code/acme/acme-web` become project `acme`. Every other repo is its own project. Wrong grouping? Fix it with:
+## 2. Choose what Taught keeps memory for
+
+Nothing leaves your laptop until you choose it. The first `taught setup` ends by opening the **Projects** page; open it anytime with `taught ui` → *Choose what's kept, and where…*
+
+![The Projects page in taught ui](images/ui-projects.png)
+
+There is one row per folder of code on this laptop. A project is matched by its repos' git URLs (GitHub, Bitbucket and so on), not by folder, so the same project can sit in a different folder on each laptop. For each row, choose where its memory is kept:
+
+| Kept in | What it means |
+|---|---|
+| **Default memory repo** | Synced to every device that uses your memory repo. |
+| **This laptop only** | Agents on this laptop get it; it is never pushed anywhere. This is also what happens in a folder you haven't chosen yet: a rule recorded there is kept on this laptop, never lost and never synced. |
+| **A separate location** | Its own git repo or synced folder, for memory that must stay apart (one client's, say). See [Keeping a project's memory apart](#keeping-a-projects-memory-apart). |
+| **Off** | Taught records nothing there and writes no files there. |
+
+- **A folder becomes one project**, named after the folder. You can rename it, and open the row to leave out repos that don't belong (a third-party clone starts unticked).
+- **Review** shows every change in plain words before anything happens. Anything that deletes or moves existing memory is marked and needs a tick.
+- **Removed memory goes to a trash folder** on this laptop first (`~/.taught-local/trash/`).
+
+From the command line, for scripts:
 
 ```bash
-taught project add <name> --from <folder>   # make the repos in a folder one project
-taught project remove <name>
+taught project add acme --from ~/code/acme                    # keep it in your default memory repo
+taught project add acme --from ~/code/acme --memory local     # this laptop only
+taught project off ~/code/some-client                         # Off
+taught project remove acme
 ```
 
-## 2. Try it (2 minutes)
+## 3. Try it (2 minutes)
 
 1. Open a repo in Claude Code (or Codex) and correct it about something lasting, the way you normally would. For example: "In this project, all dates are stored in UTC. Remember that."
 2. The agent records it by running `taught note …`. Its own instructions, which Taught wrote, tell it to. You'll see the command and a line starting with `Noted (…)`.
 3. Start a **new** session of a **different** agent in the same repo, and ask: "How do we store dates here?"
 
-It should answer from the rule. Agents read their instructions when a session starts. **Claude Code sessions that are already open** also get the new rule, with your next message after it syncs (within about a minute while you're working). **Codex and Cursor** pick it up in their next session.
+It should answer from the rule. If you haven't chosen that repo yet, this still works on this laptop: the reply says the rule is kept on "this laptop only" until you choose where it goes. Agents read their instructions when a session starts. **Claude Code sessions that are already open** also get the new rule, with your next message after it syncs (within about a minute while you're working). **Codex and Cursor** pick it up in their next session.
 
 If the agent didn't record the rule, say "record that with taught note". Or record it yourself, from the repo:
 
@@ -66,7 +87,7 @@ taught note "All dates are stored in UTC." --why "mixed time zones broke the rep
 
 Then run `taught ui` to see the rule, which agent recorded it and when (see [Manage memory in the UI](#manage-memory-in-the-ui)).
 
-## 3. Add your other laptop
+## 4. Add your other laptop
 
 On the second machine, install Taught, then run the same setup with the **same memory repo**:
 
@@ -76,6 +97,8 @@ taught setup --remote <the same memory repo> --repos <where your code is on this
 ```
 
 Folder layouts don't have to match. Taught recognises a repo by its git remote, not its path, and SSH and https clones of the same repo count as one repo.
+
+What you chose for your default memory repo is already chosen there: those projects' memory arrives with the first sync. Memory kept on "this laptop only" stays on the laptop it was recorded on, and a separate location is attached on each laptop that should see it.
 
 A rule recorded on one laptop reaches the other within about 5 minutes. To check, record a rule on laptop A, wait, then on laptop B start a new agent session in that project and ask about it.
 
@@ -89,6 +112,8 @@ When an agent records a rule, it chooses a level:
 | **project** (the default) | agents working in any repo of that project | "All dates are stored in UTC." |
 | **repo** | agents working in that one repo | "Run `make migrate-check` before committing a migration." |
 
+**A repo you haven't chosen** has no project yet. The first rule recorded there starts one that is kept on this laptop only. In a repo that is **Off**, a project rule is refused, and the agent is told why. A repo needs a git remote (`origin`): that address is how Taught tells repos apart.
+
 **Your code repos stay clean.** Project memory goes in the folder that holds the project's repos. If a repo has no such folder, its memory goes into files Taught creates inside the repo, and git is told to ignore them: `git status` stays clean and nothing gets committed. Taught never edits a file it didn't create.
 
 **Client details don't leak into personal memory.** A personal rule an agent records inside a project goes to personal memory only if it names nothing from that project. If it mentions the project's or its repos' names, a file path or a code identifier, it is held for your review:
@@ -101,6 +126,23 @@ taught review reject <id>      # keep it in its project only
 ```
 
 The same list is in `taught ui`.
+
+## Keeping a project's memory apart
+
+Your default memory repo holds everything you choose to keep in it, on every device that uses it. When a project's memory must not be there (a client's, or your employer's), keep it in **its own location**: a separate private git repo, or a folder that something else syncs (Dropbox, iCloud, a client's share).
+
+```bash
+taught location add git@github.com:client/taught-memory.git --name "Client memory"
+taught project add client --from ~/code/client --memory "Client memory"
+```
+
+Or on the Projects page: *Add a git repo or folder…*, then choose it under "Kept in".
+
+- **Nothing about that project is written to your default memory repo**: not its rules, not its name, not where it is kept. A rule you later make personal out of it keeps no trace of where it came from.
+- **Each laptop attaches the location once** (`taught location add <the same address>`). It then sees the projects kept there.
+- **The repo or folder must be empty, or already hold Taught memory.** Anything else is refused, so memory can never be pushed into a code repo by mistake.
+- **What others add waits for you.** If someone else can write to that repo or folder, a project or repo they add isn't used on your laptop until you accept it on the Projects page.
+- **Moving a project** between places is a choice under "Kept in". Taught copies it, checks it arrived, and only then removes the old copy.
 
 ## Your agents
 
@@ -177,7 +219,7 @@ taught doctor     # health check
 
 ## Update and uninstall
 
-Update by running the install command again. `taught --version` shows the version you have. Then run `taught doctor`: if a newer version needs something set up again (for example a new Claude Code hook), it says so, and `taught setup` with no options adds it, keeping your settings.
+Update by running the install command again. `taught --version` shows the version you have. **Update every laptop that uses your memory repo together:** a newer version can change the memory's format, and an older version then stops with an error until it is updated too, so that it can't undo what the newer one did. Then run `taught doctor`: if a newer version needs something set up again (for example a new Claude Code hook), it says so, and `taught setup` with no options adds it, keeping your settings.
 
 ```bash
 npm i -g https://github.com/ajeetsk/taught-releases/releases/latest/download/taught.tgz
@@ -188,6 +230,7 @@ Uninstall:
 ```bash
 taught uninstall          # shows what it would remove
 taught uninstall --yes    # removes everything Taught wrote; your memory repo is kept
+                          # (--purge also deletes ~/.taught-local, and refuses while memory exists only on this laptop)
 npm uninstall -g taught
 ```
 

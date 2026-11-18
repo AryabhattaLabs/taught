@@ -16,7 +16,7 @@ taught setup --remote git@github.com:you/taught-memory.git --repos ~/code
 taught doctor
 ```
 
-`taught setup` joins (or starts) your memory repo, finds your code folders, adds Claude Code hooks, starts a background sync (macOS) and syncs once. On a second laptop, run the same `setup` with the same memory repo.
+`taught setup` joins (or starts) your memory repo, finds your code folders, adds Claude Code hooks, starts a background sync (macOS) and syncs once. It registers nothing by itself: it ends on the **Projects** page of `taught ui`, where you choose which code Taught keeps memory for and where that memory is kept (your memory repo, this laptop only, a separate repo or folder, or Off). On a second laptop, run the same `setup` with the same memory repo.
 
 Then work as usual. When you correct an agent, it records the rule with `taught note`, and it reaches your other agents and devices within minutes. Review and edit everything in `taught ui`.
 
@@ -26,7 +26,8 @@ Then work as usual. When you correct an agent, it records the rule with `taught 
 - In a folder that holds a project's repos: the same kind of block in `CLAUDE.md` and `AGENTS.md`.
 - Inside your repos: only files Taught creates (`AGENTS.md`, `CLAUDE.local.md`, `.cursor/rules/taught*.mdc`), each listed in that repo's `.git/info/exclude`, so they never show up in `git status` or a commit. A repo's own committed `AGENTS.md` is never touched.
 - Three Claude Code hooks in `~/.claude/settings.json` (sync when a session starts, sync when Claude saves a memory, and tell an open session about memory that changed), and a background job (`~/Library/LaunchAgents/dev.taught.sync.plist`).
-- Your memory lives in `~/.taught` and your memory repo. Nothing is sent anywhere else. No telemetry.
+- Your memory lives in `~/.taught` and your memory repo, plus anything you keep on this laptop only or in a separate location you attach (`~/.taught-local`). Nothing is sent anywhere else. No telemetry.
+- In a repo you set to **Off**, Taught writes nothing at all.
 
 ## Update
 
