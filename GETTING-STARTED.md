@@ -56,7 +56,7 @@ taught project remove <name>
 2. The agent records it by running `taught note …`. Its own instructions, which Taught wrote, tell it to. You'll see the command and a line starting with `Noted (…)`.
 3. Start a **new** session of a **different** agent in the same repo, and ask: "How do we store dates here?"
 
-It should answer from the rule. Agents read their instructions when a session starts, so an already-open session won't see the rule until you restart it.
+It should answer from the rule. Agents read their instructions when a session starts. **Claude Code sessions that are already open** also get the new rule, with your next message after it syncs (within about a minute while you're working). **Codex and Cursor** pick it up in their next session.
 
 If the agent didn't record the rule, say "record that with taught note". Or record it yourself, from the repo:
 
@@ -177,7 +177,7 @@ taught doctor     # health check
 
 ## Update and uninstall
 
-Update by running the install command again. `taught --version` shows the version you have.
+Update by running the install command again. `taught --version` shows the version you have. Then run `taught doctor`: if a newer version needs something set up again (for example a new Claude Code hook), it says so, and `taught setup` with no options adds it, keeping your settings.
 
 ```bash
 npm i -g https://github.com/ajeetsk/taught-releases/releases/latest/download/taught.tgz

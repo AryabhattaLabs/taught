@@ -25,7 +25,7 @@ Then work as usual. When you correct an agent, it records the rule with `taught 
 - A block between `<!-- taught:begin … -->` markers in `~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md` and `~/.gemini/GEMINI.md`. Nothing outside the markers is touched; a copy of each file as it was is kept in `~/.taught-local/backups/`.
 - In a folder that holds a project's repos: the same kind of block in `CLAUDE.md` and `AGENTS.md`.
 - Inside your repos: only files Taught creates (`AGENTS.md`, `CLAUDE.local.md`, `.cursor/rules/taught*.mdc`), each listed in that repo's `.git/info/exclude`, so they never show up in `git status` or a commit. A repo's own committed `AGENTS.md` is never touched.
-- Two Claude Code hooks in `~/.claude/settings.json`, and a background job (`~/Library/LaunchAgents/dev.taught.sync.plist`).
+- Three Claude Code hooks in `~/.claude/settings.json` (sync when a session starts, sync when Claude saves a memory, and tell an open session about memory that changed), and a background job (`~/Library/LaunchAgents/dev.taught.sync.plist`).
 - Your memory lives in `~/.taught` and your memory repo. Nothing is sent anywhere else. No telemetry.
 
 ## Update
