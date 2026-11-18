@@ -6,6 +6,15 @@ Taught keeps what you teach your coding agents (Claude Code, Codex, Cursor, Anti
 
 **New here? Read [Getting started](GETTING-STARTED.md)**: install, a 2-minute test, a second laptop, the UI and the librarian.
 
+## Is it useful with one agent on one laptop?
+
+Yes. Several agents and laptops is where Taught helps most, but with one agent you still get:
+
+- **Rules that follow you across projects.** A correction about how you work (how you like PRs, tests or commit messages) becomes a personal rule. It applies in every project, not only the one where you said it.
+- **Your other open sessions hear about it.** With Claude Code, a rule recorded in one session reaches your other open sessions at their next prompt.
+- **One page for everything your agent has learned.** `taught ui` shows every rule, by project, for you to edit or delete. It also brings in what Claude Code has already saved.
+- **A backup with history.** Your memory is in your own private git repo. A new laptop, or a second agent later, starts fully taught.
+
 ## Start
 
 You need Node 20+, git, and an empty **private** GitHub repo for your memory (for example `you/taught-memory`). For work, it can be a private repo in your company's GitHub org, one per person.
@@ -16,7 +25,7 @@ taught setup --remote git@github.com:you/taught-memory.git
 taught doctor
 ```
 
-`taught setup` joins (or starts) your memory repo, finds your code folders, adds Claude Code hooks, starts a background sync (macOS) and syncs once. It registers nothing by itself: it ends on the **Projects** page of `taught ui`, where you choose which code Taught keeps memory for and where that memory is kept (your memory repo, this laptop only, a separate repo or folder, or Off). On a second laptop, run the same `setup` with the same memory repo.
+`taught setup` joins (or starts) your memory repo, finds your code folders, adds Claude Code hooks, starts a background sync (macOS) and syncs once. It registers nothing by itself: it ends on the **Projects** page of `taught ui`, where you choose which code Taught keeps memory for and where that memory is kept (your memory repo, this laptop only, a separate git repo, or Off). On a second laptop, run the same `setup` with the same memory repo.
 
 Then work as usual. When you correct an agent, it records the rule with `taught note`, and it reaches your other agents and devices within minutes. Review and edit everything in `taught ui`.
 
