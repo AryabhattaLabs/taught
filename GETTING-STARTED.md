@@ -141,8 +141,9 @@ Or on the Projects page: *Add a git repo…*, then choose it under "Kept in".
 - **Nothing about that project is written to your default memory repo**: not its rules, not its name, not where it is kept. A rule you later make personal out of it keeps no trace of where it came from.
 - **Each laptop attaches the location once** (`taught location add <the same address>`). It then sees the projects kept there.
 - **The repo must be empty, or already hold Taught memory.** Anything else is refused, so memory can never be pushed into a code repo by mistake.
-- **What others add waits for you.** If someone else can write to that repo, a project or repo they add isn't used on your laptop until you accept it on the Projects page.
+- **What others add waits for you.** If someone else can write to that repo, a project or repo they add isn't used on your laptop until you accept it: `taught project use <name>`, or on the Projects page. `taught sync` says so when your laptop has that code.
 - **Moving a project** between places is a choice under "Kept in". Taught copies it, checks it arrived, and only then removes the old copy.
+- **Your other laptops follow a move.** A laptop that has the new place attached goes on using the project from there at its next sync, and says so. A rule it recorded before it knew is carried along; into a shared location it waits for your yes first. A laptop that doesn't have the place attached stops getting that project.
 
 ## Sharing a project's memory with your team
 
@@ -173,6 +174,8 @@ What is different in a shared location:
 - **Removing for everyone is a separate step:** `taught project remove acme --for-everyone`, or *Remove for everyone…* on the Projects page, where you type the project's name. Its files stay in the repo, the others are told who removed it, and any of them can restore it.
 - **A shared project can't be moved elsewhere** from one laptop, because that would take it away from the others.
 - **Everyone needs Taught 0.1.0-beta.9 or later.** Older versions can't attach a shared repo.
+
+**Moving a project you already use into the team's repo:** choose the team's location under "Kept in" on the Projects page, or run `taught project add acme --memory "Team memory"`. The confirmation says how many rules become visible to the others. Its proposals and status logs stay on your laptop.
 
 **Already have a location that other people will start using?** Mark it as shared before you give them access: `taught location share "Team memory"` first says what they would see, or use *Share with other people…* on the Projects page. This can't be undone from Taught.
 
