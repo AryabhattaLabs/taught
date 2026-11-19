@@ -144,6 +144,40 @@ Or on the Projects page: *Add a git repo…*, then choose it under "Kept in".
 - **What others add waits for you.** If someone else can write to that repo, a project or repo they add isn't used on your laptop until you accept it on the Projects page.
 - **Moving a project** between places is a choice under "Kept in". Taught copies it, checks it arrived, and only then removes the old copy.
 
+## Sharing a project's memory with your team
+
+A team shares one project's memory through a private git repo that all of you can write to. Each person keeps their own default memory repo for personal rules. Only the shared project lives in the team's repo.
+
+The first person creates an empty private repo and attaches it as shared:
+
+```bash
+taught location add git@github.com:acme/team-memory.git --name "Team memory" --shared
+taught project add acme --from ~/code/acme --memory "Team memory"
+taught sync
+```
+
+Everyone else, once they have access to that repo:
+
+```bash
+taught location add git@github.com:acme/team-memory.git --name "Team memory"
+taught sync
+```
+
+On the Projects page it is *Add a git repo…*, then "Other people too".
+
+What is different in a shared location:
+
+- **A rule an agent records there goes to the whole team,** at each person's next sync, with the name of who recorded it. Whoever can write to the repo is trusted: there is no review per rule.
+- **Nothing of yours is published by itself.** Your saved Claude Code notes about the project are not imported into it. The rules among them wait under Proposals as "Share with the team?", notes about you are offered for your personal memory, and status logs are left out. Everything that waits for your yes stays on your laptop.
+- **Remove and Off only affect your laptop.** The project stays in the repo for everyone else, and *Use here* brings it back for you.
+- **Removing for everyone is a separate step:** `taught project remove acme --for-everyone`, or *Remove for everyone…* on the Projects page, where you type the project's name. Its files stay in the repo, the others are told who removed it, and any of them can restore it.
+- **A shared project can't be moved elsewhere** from one laptop, because that would take it away from the others.
+- **Everyone needs Taught 0.1.0-beta.9 or later.** Older versions can't attach a shared repo.
+
+**Already have a location that other people will start using?** Mark it as shared before you give them access: `taught location share "Team memory"` first says what they would see, or use *Share with other people…* on the Projects page. This can't be undone from Taught.
+
+Who can read and write the team's memory is decided by the repo's access settings, where you add and remove people. The repo's git history is the record of who changed what.
+
 ## Your agents
 
 | Agent | What it gets | Anything to do? |
@@ -173,7 +207,7 @@ This opens a page in your browser. It runs only on your machine (`127.0.0.1`), b
 
 ![A project with its repos in taught ui](images/ui-project.png)
 
-**Proposals:** everything waiting for you. That means personal rules held because they mention a project, and the librarian's suggested merges and cleanups. Nothing changes until you accept.
+**Proposals:** everything waiting for you. That means personal rules held because they mention a project, the librarian's suggested merges and cleanups, and rules of yours not yet shared with a team. Nothing changes until you accept.
 
 ![Proposals waiting for review in taught ui](images/ui-proposals.png)
 

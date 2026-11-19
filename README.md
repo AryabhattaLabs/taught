@@ -15,6 +15,10 @@ Yes. Several agents and laptops is where Taught helps most, but with one agent y
 - **One page for everything your agent has learned.** `taught ui` shows every rule, by project, for you to edit or delete. It also brings in what Claude Code has already saved.
 - **A backup with history.** Your memory is in your own private git repo. A new laptop, or a second agent later, starts fully taught.
 
+## For a team
+
+A team can share one project's memory through a private git repo that all of you can write to, while each person keeps their own personal rules. Nothing of yours is published into it without your yes, and removing the project on your laptop doesn't take it from the others. See [Sharing a project's memory with your team](GETTING-STARTED.md#sharing-a-projects-memory-with-your-team). Everyone needs 0.1.0-beta.9 or later.
+
 ## Start
 
 You need Node 20+, git, and an empty **private** GitHub repo for your memory (for example `you/taught-memory`). For work, it can be a private repo in your company's GitHub org, one per person.
