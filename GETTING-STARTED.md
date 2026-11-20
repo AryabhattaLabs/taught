@@ -6,13 +6,15 @@ You tell Claude Code "we never call the payments API from the frontend". Tomorro
 
 This page takes about 10 minutes: install, choosing what to keep, a first test, a second device, and what to tell us.
 
+Wondering how this differs from your own git repo and a cron job, or what protects a team's rules? See the [FAQ](FAQ.md).
+
 ## What you need
 
 - macOS (Linux works, but the background sync is macOS-only for now).
 - Node 20 or newer, and git.
 - At least one of: Claude Code, Codex, Cursor, Antigravity or Gemini CLI.
 - An **empty private GitHub repo** for your memory, for example `you/taught-memory`. Create it now, with no README. Your memory lives there, and only people with access to it can read it. Don't share it with anyone: Taught has no accounts, so anyone with access to this repo is treated as you.
-  - **Using Taught for work?** Keep work memory apart from your own: put it in a separate private repo in your company's GitHub org (see [Keeping a project's memory apart](#keeping-a-projects-memory-apart)), so company knowledge stays on company accounts. Each person needs their own repo: Taught doesn't share memory between people yet.
+  - **Using Taught for work?** Keep work memory apart from your own: put it in a separate private repo in your company's GitHub org (see [Keeping a project's memory apart](#keeping-a-projects-memory-apart)), so company knowledge stays on company accounts. Each person needs their own memory repo. A team shares a project through one more repo, kept apart from these (see [Sharing a project's memory with your team](#sharing-a-projects-memory-with-your-team)).
 
 ## 1. Install and set up (5 minutes)
 
@@ -256,7 +258,7 @@ taught doctor     # health check
 
 ## Update and uninstall
 
-Update by running the install command again. `taught --version` shows the version you have. **Update every laptop that uses your memory repo together:** a newer version can change the memory's format, and an older version then stops with an error until it is updated too, so that it can't undo what the newer one did. Then run `taught doctor`: if a newer version needs something set up again (for example a new Claude Code hook), it says so, and `taught setup` with no options adds it, keeping your settings.
+Update by running the install command again. `taught --version` shows the version you have; `taught doctor`, `taught status` and a sync you run yourself say when a newer one exists. **Update every laptop that uses your memory repo together:** a newer version can change the memory's format, and an older version then stops with an error until it is updated too, so that it can't undo what the newer one did. Then run `taught doctor`: if a newer version needs something set up again (for example a new Claude Code hook), it says so, and `taught setup` with no options adds it, keeping your settings.
 
 ```bash
 npm i -g https://github.com/ajeetsk/taught-releases/releases/latest/download/taught.tgz
@@ -276,7 +278,8 @@ Before Taught first changes a file of yours, it keeps a copy in `~/.taught-local
 ## Privacy
 
 - Your memory stays on your machines and in your own private repo.
-- Taught sends nothing anywhere else: no telemetry, no server.
+- Taught sends nothing about you, your code or your memory anywhere else: no telemetry, no server.
+- Once a day it asks GitHub whether a newer version exists, by fetching one small public file from the release page. Nothing from your machine is sent with that request. GitHub's download count for that file is the only usage figure Taught's author gets. `taught update-check off` stops it on that laptop; `taught update-check` shows what it does.
 - The librarian is the only thing that shows memory to a model, and only when you run it. It goes to the agent you chose.
 
 ## Tell us how it went

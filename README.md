@@ -6,6 +6,8 @@ Taught keeps what you teach your coding agents (Claude Code, Codex, Cursor, Anti
 
 **New here? Read [Getting started](GETTING-STARTED.md)**: install, a 2-minute test, a second laptop, the UI and the librarian.
 
+**Questions?** The [FAQ](FAQ.md) covers how this differs from your own git repo and a cron job, what protects a team's rules, and what leaves your machine.
+
 ## Is it useful with one agent on one laptop?
 
 Yes. Several agents and laptops is where Taught helps most, but with one agent you still get:
@@ -39,12 +41,13 @@ Then work as usual. When you correct an agent, it records the rule with `taught 
 - In a folder that holds a project's repos: the same kind of block in `CLAUDE.md` and `AGENTS.md`.
 - Inside your repos: only files Taught creates (`AGENTS.md`, `CLAUDE.local.md`, `.cursor/rules/taught*.mdc`), each listed in that repo's `.git/info/exclude`, so they never show up in `git status` or a commit. A repo's own committed `AGENTS.md` is never touched.
 - Three Claude Code hooks in `~/.claude/settings.json` (sync when a session starts, sync when Claude saves a memory, and tell an open session about memory that changed), and a background job (`~/Library/LaunchAgents/dev.taught.sync.plist`).
-- Your memory lives in `~/.taught` and your memory repo, plus anything you keep on this laptop only or in a separate location you attach (`~/.taught-local`). Nothing is sent anywhere else. No telemetry.
+- Your memory lives in `~/.taught` and your memory repo, plus anything you keep on this laptop only or in a separate location you attach (`~/.taught-local`). Nothing about you, your code or your memory is sent anywhere else. No telemetry.
+- Once a day, Taught asks GitHub whether a newer version exists, by fetching one small public file from this repo's releases. Nothing from your machine is sent with that request. GitHub's download count for that file is the only usage figure Taught's author gets: roughly how many devices run it. Turn it off on a device with `taught update-check off`.
 - In a repo you set to **Off**, Taught writes nothing at all.
 
 ## Update
 
-Run the install command again: it always fetches the latest beta. `taught --version` shows which one you have.
+Run the install command again: it always fetches the latest beta. `taught --version` shows which one you have, and `taught doctor`, `taught status` and a sync you run yourself say when a newer one exists.
 
 ```bash
 npm i -g https://github.com/ajeetsk/taught-releases/releases/latest/download/taught.tgz
