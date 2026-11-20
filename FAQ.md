@@ -76,12 +76,19 @@ What protects you today:
 - **A rule stays inside Taught's block.** Its text can't write into the rest of your `CLAUDE.md` or `AGENTS.md` (from 0.1.0-beta.12).
 - **A rule is text, not permission.** It doesn't change what your agent is allowed to do: its permission prompts and sandbox stay as you set them.
 
+**Review before a rule reaches the team** (from 0.1.0-beta.14). It is off by default: without it, a rule a teammate's agent records reaches the others' agents at their next sync, and you are told. An admin of the team's repo turns it on once, for everyone:
+
+- A rule recorded by anyone who isn't an admin of the repo applies on their own laptop and waits. It reaches nobody else until an admin approves it, in `taught ui` or by merging a pull request on the git host.
+- Who is an admin is your git host's answer, not Taught's: on GitHub, the repo's admin and maintain roles.
+- Protect the repo's main branch on the git host as well. Taught follows the roles by itself, but only the host can stop someone pushing a rule to main by hand. On GitHub, a private repo needs a paid plan for that.
+
+See [Reviewing rules before they reach the team](GETTING-STARTED.md#reviewing-rules-before-they-reach-the-team).
+
 What isn't there yet:
 
-- **No review step per rule.** A rule a teammate's agent records reaches the others' agents at their next sync, without anyone approving it.
-- **A team repo whose main branch is protected isn't supported.** Taught pushes straight to it, and tells you when the repo refuses the push.
-
-Until review exists, a shared location suits a small team whose members trust each other's judgement. Review before a rule reaches the team is what we are building next.
+- **Review is built and tested on GitHub.** On GitLab and Bitbucket the pull request is opened by you from a page Taught gives you, and an admin's laptop has to be told that it is one.
+- **Without review on, a team repo whose main branch is protected isn't supported.** Taught pushes straight to it, and tells you when the repo refuses the push.
+- **Taught doesn't judge what a rule says.** It shows who recorded a rule and lets the right people approve it; reading it is still a person's job.
 
 ## Where is my memory, and who can read it?
 

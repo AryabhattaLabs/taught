@@ -21,7 +21,7 @@ Yes. Several agents and laptops is where Taught helps most, but with one agent y
 
 ## For a team
 
-A team can share one project's memory through a private git repo that all of you can write to, while each person keeps their own personal rules. Nothing of yours is published into it without your yes, and removing the project on your laptop doesn't take it from the others. See [Sharing a project's memory with your team](GETTING-STARTED.md#sharing-a-projects-memory-with-your-team). Everyone needs 0.1.0-beta.9 or later.
+A team can share one project's memory through a private git repo that all of you can write to, while each person keeps their own personal rules. Nothing of yours is published into it without your yes, and removing the project on your laptop doesn't take it from the others. See [Sharing a project's memory with your team](GETTING-STARTED.md#sharing-a-projects-memory-with-your-team). A team that wants a gate can turn review on: a rule then reaches the others only after an admin of the repo approves it, in Taught or as a pull request. Everyone needs 0.1.0-beta.9 or later.
 
 ## Start
 

@@ -176,7 +176,7 @@ What is different in a shared location:
 - **Remove and Off only affect your laptop.** The project stays in the repo for everyone else, and *Use here* brings it back for you.
 - **Removing for everyone is a separate step:** `taught project remove acme --for-everyone`, or *Remove for everyone…* on the Projects page, where you type the project's name. Its files stay in the repo, the others are told who removed it, and any of them can restore it.
 - **A shared project can't be moved elsewhere** from one laptop, because that would take it away from the others.
-- **A team repo whose main branch is protected isn't supported yet.** Taught pushes straight to it. If the host refuses, the sync says so, and your changes stay on your laptop, where your own agents still get them.
+- **A rule reaches the others at once, unless you turn review on.** There is no approval step by default. For one, see [Reviewing rules before they reach the team](#reviewing-rules-before-they-reach-the-team). Without review, a team repo whose main branch is protected isn't supported: Taught pushes straight to it, and says so when the host refuses.
 - **Everyone needs Taught 0.1.0-beta.9 or later.** Older versions can't attach a shared repo.
 
 **Moving a project you already use into the team's repo:** choose the team's location under "Kept in" on the Projects page, or run `taught project add acme --memory "Team memory"`. The confirmation says how many rules become visible to the others. Its proposals and status logs stay on your laptop.
@@ -184,6 +184,43 @@ What is different in a shared location:
 **Already have a location that other people will start using?** Mark it as shared before you give them access: `taught location share "Team memory"` first says what they would see, or use *Share with other people…* on the Projects page. This can't be undone from Taught.
 
 Who can read and write the team's memory is decided by the repo's access settings, where you add and remove people. The repo's git history is the record of who changed what.
+
+### Reviewing rules before they reach the team
+
+By default, whoever can push to the team's repo adds a rule for everyone. With review on, a rule reaches the team only after one of the repo's admins approves it.
+
+An admin of the repo turns it on, once, for everyone:
+
+```bash
+taught location review "Team memory" on
+```
+
+Then, at each laptop's next sync:
+
+| Who | What changes |
+|---|---|
+| **Admins of the repo** (the admin and maintain roles) | Nothing. Their rules go to the team as before. |
+| **Everyone else** | A rule they record applies on their own laptop at once, and waits. It is kept on a branch of their own in the team's repo, never on its main branch. |
+
+**Asking for review.** The project's page in `taught ui` lists your rules that wait. *Ask for review…* lets you tick which ones, and opens a pull request in the team's repo. From the command line: `taught review request`.
+
+- With GitHub's `gh` command installed and signed in, the pull request is opened for you.
+- Otherwise Taught gives you the page on your git host where you create it (GitHub, GitLab and Bitbucket), with the branch already filled in.
+- A rule you record after asking is not part of that request.
+
+**Approving.** An admin sees each request under **Proposals** in `taught ui`, with every rule readable, and approves or declines rule by rule. Or they merge the pull request on the git host, as they would for code. Either way works, and both can be used in the same team. From the command line: `taught review status`, `taught review approve <who>`, `taught review decline <id> --why "…"`.
+
+- An approved rule reaches everyone at their next sync, under the name of the person who recorded it. The approval is in the repo's history under the admin's name.
+- A declined rule comes back with the reason. It stays a rule on your own laptop; edit it and ask again, make it personal, or delete it.
+- **Nobody has to go looking.** A sync you run and `taught status` say what waits: for an admin, how many rules from whom; for everyone else, which of their own rules the team doesn't have yet, are in review, or were not accepted.
+
+**Who counts as an admin** is your git host's answer, not Taught's.
+
+- On GitHub, Taught reads your role through `gh`. Admin and maintain write directly; the write role goes through review.
+- Where it can't ask (no `gh`, or GitLab and Bitbucket), a laptop holds its rules for review. An admin there says so once: `taught location review "Team memory" --as admin`.
+- **Protect the main branch on your git host** (require a pull request before merging, with admins allowed to bypass). Taught follows the roles by itself, but only the host can stop someone pushing to main by hand. Without that protection, review is an agreement Taught keeps, not a lock. On GitHub, a private repo can have a protected branch only on a paid plan; on the free plan GitHub refuses the setting.
+
+Every laptop that uses a reviewed location needs Taught 0.1.0-beta.14 or later; older versions stop syncing it and say why. `taught location review "Team memory" off` turns it off again: every rule that still waits then goes to the whole team.
 
 ## Your agents
 
