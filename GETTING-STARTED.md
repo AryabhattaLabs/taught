@@ -171,10 +171,12 @@ On the Projects page it is *Add a git repo…*, then "Other people too".
 What is different in a shared location:
 
 - **A rule an agent records there goes to the whole team,** at each person's next sync, with the name of who recorded it. Whoever can write to the repo is trusted: there is no review per rule.
+- **You are told what teammates changed.** A sync you run says it by name ("acme: 2 new rules from Priya"). `taught status` and the project's page in `taught ui` list the last week's changes, and an open Claude Code session shows you a line when a teammate's rule reaches it. The name is the one git reports.
 - **Nothing of yours is published by itself.** Your saved Claude Code notes about the project are not imported into it. The rules among them wait under Proposals as "Share with the team?", notes about you are offered for your personal memory, and status logs are left out. Everything that waits for your yes stays on your laptop.
 - **Remove and Off only affect your laptop.** The project stays in the repo for everyone else, and *Use here* brings it back for you.
 - **Removing for everyone is a separate step:** `taught project remove acme --for-everyone`, or *Remove for everyone…* on the Projects page, where you type the project's name. Its files stay in the repo, the others are told who removed it, and any of them can restore it.
 - **A shared project can't be moved elsewhere** from one laptop, because that would take it away from the others.
+- **A team repo whose main branch is protected isn't supported yet.** Taught pushes straight to it. If the host refuses, the sync says so, and your changes stay on your laptop, where your own agents still get them.
 - **Everyone needs Taught 0.1.0-beta.9 or later.** Older versions can't attach a shared repo.
 
 **Moving a project you already use into the team's repo:** choose the team's location under "Kept in" on the Projects page, or run `taught project add acme --memory "Team memory"`. The confirmation says how many rules become visible to the others. Its proposals and status logs stay on your laptop.
