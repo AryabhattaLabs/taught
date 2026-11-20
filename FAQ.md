@@ -2,6 +2,7 @@
 
 Short answers, including what Taught doesn't do yet. For setup, see [Getting started](GETTING-STARTED.md).
 
+- [What exactly does Taught remember?](#what-exactly-does-taught-remember)
 - [Why not my own git repo and a cron job?](#why-not-my-own-git-repo-and-a-cron-job)
 - [Why not commit `CLAUDE.md` or `AGENTS.md` to the code repo?](#why-not-commit-claudemd-or-agentsmd-to-the-code-repo)
 - [Doesn't each agent have its own memory?](#doesnt-each-agent-have-its-own-memory)
@@ -16,6 +17,15 @@ Short answers, including what Taught doesn't do yet. For setup, see [Getting sta
 - [Which agents, systems and git hosts work?](#which-agents-systems-and-git-hosts-work)
 - [How do I stop using it?](#how-do-i-stop-using-it)
 - [What does it cost?](#what-does-it-cost)
+
+## What exactly does Taught remember?
+
+Rules, not conversations.
+
+- **Taught keeps what you want followed from now on:** a correction ("we never call the payments API from the frontend"), a way you like work done (PRs, tests, commit messages), a project's conventions. Each is a short rule with its reason, and belongs to you, to a project or to one repo.
+- **The conversation stays with the agent:** what was said in a session, the files it read, its context window and its chat history. Taught doesn't keep that or move it anywhere, so it won't continue yesterday's session on another laptop.
+
+What Taught adds is reach. A rule recorded once is there at the start of every session, in every agent, on every laptop, and for every teammate who shares the project.
 
 ## Why not my own git repo and a cron job?
 
@@ -60,6 +70,7 @@ What protects you today:
 
 - **Access is the repo's access.** The team's memory is a private git repo. Only people who can push to it can add or change a rule. Give that to the people you would let merge code.
 - **Every rule says who recorded it,** with which agent and when. The name is the one git reports; your git host's own record of pushes is the certain one.
+- **You're told when a teammate's rule arrives.** The sync that brings it names the teammate, and `taught status` and `taught ui` list what your team added, changed or removed in the last week (from 0.1.0-beta.13).
 - **Everything is in the history.** Deleting a rule in `taught ui`, or reverting the commit, takes it away from everyone at their next sync.
 - **Nothing of yours is published by itself.** Your saved Claude Code notes wait for your yes before they are shared. A project or repo a teammate adds isn't used on your laptop until you accept it.
 - **A rule stays inside Taught's block.** Its text can't write into the rest of your `CLAUDE.md` or `AGENTS.md` (from 0.1.0-beta.12).
@@ -68,7 +79,7 @@ What protects you today:
 What isn't there yet:
 
 - **No review step per rule.** A rule a teammate's agent records reaches the others' agents at their next sync, without anyone approving it.
-- **A team repo whose main branch is protected isn't supported.** Taught pushes straight to it.
+- **A team repo whose main branch is protected isn't supported.** Taught pushes straight to it, and tells you when the repo refuses the push.
 
 Until review exists, a shared location suits a small team whose members trust each other's judgement. Review before a rule reaches the team is what we are building next.
 

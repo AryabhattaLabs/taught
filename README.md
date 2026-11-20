@@ -4,6 +4,8 @@ Correct one agent once. Every agent on every machine remembers.
 
 Taught keeps what you teach your coding agents (Claude Code, Codex, Cursor, Antigravity / Gemini CLI) in a private git repo you own, and writes it into the files each agent already reads, on every device.
 
+It keeps rules, not conversations. A rule is something you want followed from now on: a correction, a way you like work done, a project's convention. What an agent said and read in a session (its context and chat history) stays with that agent.
+
 **New here? Read [Getting started](GETTING-STARTED.md)**: install, a 2-minute test, a second laptop, the UI and the librarian.
 
 **Questions?** The [FAQ](FAQ.md) covers how this differs from your own git repo and a cron job, what protects a team's rules, and what leaves your machine.
