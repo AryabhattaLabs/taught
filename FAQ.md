@@ -70,7 +70,7 @@ What protects you today:
 
 - **Access is the repo's access.** The team's memory is a private git repo. Only people who can push to it can add or change a rule. Give that to the people you would let merge code.
 - **Every rule says who recorded it,** with which agent and when. The name is the one git reports; your git host's own record of pushes is the certain one.
-- **You're told when a teammate's rule arrives.** The sync that brings it names the teammate, and `taught status` and `taught ui` list what your team added, changed or removed in the last week (from 0.1.0-beta.13).
+- **You're told when a teammate's rule arrives.** The next sync you run names the teammate, and `taught status` and `taught ui` list what your team added, changed or removed in the last week (from 0.1.0-beta.13).
 - **Everything is in the history.** Deleting a rule in `taught ui`, or reverting the commit, takes it away from everyone at their next sync.
 - **Nothing of yours is published by itself.** Your saved Claude Code notes wait for your yes before they are shared. A project or repo a teammate adds isn't used on your laptop until you accept it.
 - **A rule stays inside Taught's block.** Its text can't write into the rest of your `CLAUDE.md` or `AGENTS.md` (from 0.1.0-beta.12).

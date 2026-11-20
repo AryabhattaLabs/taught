@@ -47,7 +47,7 @@ Every line should be ✓, or · (information only). If something shows ✗, it s
 
 ## 2. Choose what Taught keeps memory for
 
-Nothing leaves your laptop until you choose it. The first `taught setup` ends by opening the **Projects** page; open it anytime with `taught ui` → *Choose what's kept, and where…*
+Nothing leaves your laptop until you choose it. The first `taught setup` ends by opening the **Projects** page; open it anytime with `taught ui` → *Add or manage projects…*
 
 ![The Projects page in taught ui](images/ui-projects.png)
 
@@ -212,7 +212,7 @@ Then, at each laptop's next sync:
 
 - An approved rule reaches everyone at their next sync, under the name of the person who recorded it. The approval is in the repo's history under the admin's name.
 - A declined rule comes back with the reason. It stays a rule on your own laptop; edit it and ask again, make it personal, or delete it.
-- **Nobody has to go looking.** A sync you run and `taught status` say what waits: for an admin, how many rules from whom; for everyone else, which of their own rules the team doesn't have yet, are in review, or were not accepted.
+- **Nobody has to go looking.** A sync you run and `taught status` say what waits: for an admin, how many rules from whom; for everyone else, which of their own rules the team doesn't have yet, are in review, or were not accepted. When a rule of yours is approved, the next sync you run says so, and `taught status` and the project's page show it for a week (from 0.1.0-beta.15).
 
 **Who counts as an admin** is your git host's answer, not Taught's.
 
