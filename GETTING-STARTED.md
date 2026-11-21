@@ -199,7 +199,7 @@ Then, at each laptop's next sync:
 
 | Who | What changes |
 |---|---|
-| **Admins of the repo** (the admin and maintain roles) | Nothing. Their rules go to the team as before. |
+| **Admins of the repo** (on GitHub, the admin and maintain roles) | Nothing. Their rules go to the team as before. |
 | **Everyone else** | A rule they record applies on their own laptop at once, and waits. It is kept on a branch of their own in the team's repo, never on its main branch. |
 
 **Asking for review.** The project's page in `taught ui` lists your rules that wait. *Ask for review…* lets you tick which ones, and opens a pull request in the team's repo. From the command line: `taught review request`.
@@ -217,7 +217,7 @@ Then, at each laptop's next sync:
 **Who counts as an admin** is your git host's answer, not Taught's.
 
 - On GitHub, Taught reads your role through `gh`. Admin and maintain write directly; the write role goes through review.
-- Where it can't ask (no `gh`, or GitLab and Bitbucket), a laptop holds its rules for review. An admin there says so once: `taught location review "Team memory" --as admin`.
+- Where it can't ask (no `gh`, or GitLab and Bitbucket), a laptop holds its rules for review. The laptop that turns review on is taken as an admin's. An admin on any other laptop says so once: `taught location review "Team memory" --as admin`.
 - **Protect the main branch on your git host** (require a pull request before merging, with admins allowed to bypass). Taught follows the roles by itself, but only the host can stop someone pushing to main by hand. Without that protection, review is an agreement Taught keeps, not a lock. On GitHub, a private repo can have a protected branch only on a paid plan; on the free plan GitHub refuses the setting.
 
 Every laptop that uses a reviewed location needs Taught 0.1.0-beta.14 or later; older versions stop syncing it and say why. `taught location review "Team memory" off` turns it off again: every rule that still waits then goes to the whole team.

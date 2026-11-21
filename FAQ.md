@@ -86,7 +86,7 @@ See [Reviewing rules before they reach the team](GETTING-STARTED.md#reviewing-ru
 
 What isn't there yet:
 
-- **Review is built and tested on GitHub.** On GitLab and Bitbucket the pull request is opened by you from a page Taught gives you, and an admin's laptop has to be told that it is one.
+- **Review does more for you on GitHub than elsewhere.** It has been run on GitHub, Bitbucket and GitLab. On GitHub, Taught opens the pull request for you and reads who is an admin. On Bitbucket and GitLab you open the pull request (GitLab calls it a merge request) yourself, from a page Taught gives you, and an admin's laptop has to be told that it is one.
 - **Without review on, a team repo whose main branch is protected isn't supported.** Taught pushes straight to it, and tells you when the repo refuses the push.
 - **Taught doesn't judge what a rule says.** It shows who recorded a rule and lets the right people approve it; reading it is still a person's job.
 
@@ -149,7 +149,7 @@ Each agent file has a limit: about 150 lines of personal rules and about 220 for
 
 - **Agents:** Claude Code, Codex, Cursor and Antigravity. Gemini CLI is untested. Any other agent that reads `AGENTS.md` gets project memory. Details are in [Your agents](GETTING-STARTED.md#your-agents).
 - **Systems:** macOS is what it is built and tested on. Linux is expected to work but is little tested, and there the background sync is a line you add to cron yourself. Windows is untested.
-- **Git hosts:** Taught uses plain git, so any host you can clone from should work for the memory repo. GitHub is the only one it has been run against. Code repos on other hosts are recognised by their address.
+- **Git hosts:** GitHub, Bitbucket and GitLab. Sync and review have been run on all three. For a review, Taught opens the pull request for you on GitHub (with `gh` installed and signed in); on Bitbucket and GitLab it gives you a link to the form, already filled in, and you create it yourself. Taught uses plain git, so any other host you can clone from should work for the memory repo. Code repos on other hosts are recognised by their address.
 
 ## How do I stop using it?
 

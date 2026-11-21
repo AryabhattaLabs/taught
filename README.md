@@ -133,7 +133,7 @@ See [Sharing a project's memory with your team](GETTING-STARTED.md#sharing-a-pro
 
 - **Agents:** Claude Code, Codex, Cursor and Antigravity. Gemini CLI is untested. Any other agent that reads `AGENTS.md` gets project memory.
 - **Systems:** macOS is what Taught is built and tested on. Linux is expected to work but is little tested, and Windows is untested.
-- **Git hosts:** Taught uses plain git, and GitHub is the only host it has been run against.
+- **Git hosts:** GitHub, Bitbucket and GitLab. Sync and review have been run on all three. For a review, Taught opens the pull request for you on GitHub; on Bitbucket and GitLab it gives you a link and you create it yourself.
 
 Details are in the [FAQ](FAQ.md#which-agents-systems-and-git-hosts-work).
 
