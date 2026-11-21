@@ -1,31 +1,40 @@
-# Taught (beta)
+<p align="center">
+  <img src="images/taught-mark.svg" width="72" height="72" alt="">
+</p>
 
-Correct one agent once. Every agent on every machine remembers.
+<h1 align="center">Taught</h1>
 
-Taught keeps what you teach your coding agents (Claude Code, Codex, Cursor, Antigravity / Gemini CLI) in a private git repo you own, and writes it into the files each agent already reads, on every device.
+<p align="center"><strong>Correct one agent once. Every agent on every machine remembers.</strong></p>
 
-It keeps rules, not conversations. A rule is something you want followed from now on: a correction, a way you like work done, a project's convention. What an agent said and read in a session (its context and chat history) stays with that agent.
+<p align="center">
+  The rules you teach Claude Code, Codex, Cursor and Antigravity,<br>
+  kept in a private git repo you own and given to all of them, on every laptop.
+</p>
 
-**New here? Read [Getting started](GETTING-STARTED.md)**: install, a 2-minute test, a second laptop, the UI and the librarian.
+<p align="center"><em>For developers who work with more than one coding agent, on more than one laptop, or for more than one client.</em></p>
 
-**Questions?** The [FAQ](FAQ.md) covers how this differs from your own git repo and a cron job, what protects a team's rules, and what leaves your machine.
+<p align="center">
+  <a href="GETTING-STARTED.md"><strong>Getting started</strong></a> ·
+  <a href="FAQ.md">FAQ</a> ·
+  <a href="https://github.com/ajeetsk/taught-releases/releases">Releases</a> ·
+  <a href="https://github.com/ajeetsk/taught-releases/issues/new/choose">Feedback</a>
+</p>
 
-## Is it useful with one agent on one laptop?
+<p align="center"><sub>Free beta · macOS · rules, not chat history · your own repo, no Taught account · no telemetry</sub></p>
 
-Yes. Several agents and laptops is where Taught helps most, but with one agent you still get:
+<p align="center">
+  <img src="images/demo.svg" width="880" alt="On laptop 1, an agent records a rule with taught note. A few minutes later, on laptop 2, taught sync has written the rule into AGENTS.md and CLAUDE.local.md, and git status shows nothing.">
+</p>
 
-- **Rules that follow you across projects.** A correction about how you work (how you like PRs, tests or commit messages) becomes a personal rule. It applies in every project, not only the one where you said it.
-- **Your other open sessions hear about it.** With Claude Code, a rule recorded in one session reaches your other open sessions at their next prompt.
-- **One page for everything your agent has learned.** `taught ui` shows every rule, by project, for you to edit or delete. It also brings in what Claude Code has already saved.
-- **A backup with history.** Your memory is in your own private git repo. A new laptop, or a second agent later, starts fully taught.
+> You tell Claude Code: "we never call the payments API from the frontend."<br>
+> The next morning, Codex does it anyway.<br>
+> On your other laptop, Claude Code has never heard of it.
 
-## For a team
+Each agent keeps its own memory, on one machine. So you teach the same thing again for each agent, and again on each laptop. With Taught you say it once. The agent records it as a rule, and your other agents and laptops have it within minutes.
 
-A team can share one project's memory through a private git repo that all of you can write to, while each person keeps their own personal rules. Nothing of yours is published into it without your yes, and removing the project on your laptop doesn't take it from the others. See [Sharing a project's memory with your team](GETTING-STARTED.md#sharing-a-projects-memory-with-your-team). A team that wants a gate can turn review on: a rule then reaches the others only after an admin of the repo approves it, in Taught or as a pull request. Everyone needs 0.1.0-beta.9 or later.
+## Try it
 
-## Start
-
-You need Node 20+, git, and an empty **private** GitHub repo for your memory (for example `you/taught-memory`). For work, it can be a private repo in your company's GitHub org, one per person.
+You need macOS, Node 20+, git, and an empty **private** GitHub repo for your memory (for example `you/taught-memory`).
 
 ```bash
 npm i -g https://github.com/ajeetsk/taught-releases/releases/latest/download/taught.tgz
@@ -33,11 +42,71 @@ taught setup --remote git@github.com:you/taught-memory.git
 taught doctor
 ```
 
-`taught setup` joins (or starts) your memory repo, finds your code folders, adds Claude Code hooks, starts a background sync (macOS) and syncs once. It registers nothing by itself: it ends on the **Projects** page of `taught ui`, where you choose which code Taught keeps memory for and where that memory is kept (your memory repo, this laptop only, a separate git repo, or Off). On a second laptop, run the same `setup` with the same memory repo.
+`taught setup` joins (or starts) your memory repo, finds your code folders, adds Claude Code hooks, starts a background sync and syncs once. It registers nothing by itself: it ends on the **Projects** page of `taught ui`, where you choose which code Taught keeps memory for and where that memory is kept (your memory repo, this laptop only, a separate git repo, or Off). For work, the memory repo can be a private repo in your company's GitHub org, one per person.
 
-Then work as usual. When you correct an agent, it records the rule with `taught note`, and it reaches your other agents and devices within minutes. Review and edit everything in `taught ui`.
+Then see it work, in two minutes:
 
-## What Taught changes on your machine
+1. In one of your repos, correct an agent about something lasting: "In this project, all dates are stored in UTC. Remember that."
+2. The agent records it with `taught note`. You'll see a line starting with `Noted (…)`.
+3. Start a new session of a **different** agent in the same repo and ask: "How do we store dates here?"
+
+On a second laptop, run the same `setup` with the same memory repo. The full walk-through is in [Getting started](GETTING-STARTED.md).
+
+## How a rule travels
+
+```mermaid
+%%{init: {"flowchart": {"wrappingWidth": 420}}}%%
+flowchart LR
+  you(["You correct an agent, once"]) --> note["The agent records the rule<br>(taught note)"]
+  note --> repo[("Your private<br>git repo")]
+  repo --> claude["Claude Code · CLAUDE.md"]
+  repo --> codex["Codex · AGENTS.md"]
+  repo --> cursor["Cursor · its rules files"]
+  repo --> other["Your other laptop · the same agents"]
+```
+
+Taught keeps **rules, not conversations**. A rule is something you want followed from now on: a correction, a way you like work done, a project's convention. What an agent said and read in a session (its context and chat history) stays with that agent.
+
+It is not a hosted service either: there is no Taught server and no account. Underneath it is git, and a repo that is yours.
+
+## What you get
+
+- **One memory for all your agents.** Teach Claude Code something, and Codex and Cursor know it too.
+- **The same rules on every laptop.** On a new laptop, one setup command brings them all.
+- **Your habits follow you into every project.** A correction about how you work (how you like PRs, tests or commit messages) becomes a personal rule, and applies everywhere, not only in the project where you said it.
+- **A client's rules stay with that client.** Each project's rules stay with that project. A client's memory can live in its own private repo, or on one laptop only.
+- **Your other open sessions hear about it.** With Claude Code, a rule recorded in one session reaches your other open sessions at their next prompt.
+- **What Claude Code has already saved comes along.** Taught brings its saved memories in, so you don't start from nothing.
+- **A backup with history.** Every rule is a file in your own private git repo. Edit or delete one, and the old version is still there.
+- **For a team, shared rules with an optional review.** See [For a team](#for-a-team).
+
+**One agent, on one laptop?** Still useful. Your personal rules, your open sessions, what Claude Code has saved and the backup need nothing more.
+
+## One page for everything your agents have learned
+
+`taught ui` opens a page that runs only on your machine. It shows every rule, by project, with which agent recorded it and when. Edit or delete any of them; the old version stays in history.
+
+![A project's rules in taught ui](images/ui-project.png)
+
+## Why not…
+
+| Instead of Taught | What you would be missing |
+|---|---|
+| **Your own git repo and a cron job** | Underneath, that is what Taught is. It adds the work around the sync: the agent records the rule itself, one rule is written into every agent's file, and your personal rules are kept apart from each project's. [More](FAQ.md#why-not-my-own-git-repo-and-a-cron-job) |
+| **Committing `CLAUDE.md` or `AGENTS.md`** | Keep doing that for what your team has agreed on. Taught is for what doesn't fit there: personal rules, corrections made in the middle of a task, projects made of several repos, and memory that must not be in the code repo. It never touches a committed file. [More](FAQ.md#why-not-commit-claudemd-or-agentsmd-to-the-code-repo) |
+| **Each agent's own memory** | That stays with one agent on one machine. Taught gives every agent the same rules on every device, and brings in what Claude Code has already saved. [More](FAQ.md#doesnt-each-agent-have-its-own-memory) |
+
+## Yours, and easy to undo
+
+- **Your memory is plain markdown in your own private git repo**, one file per rule, readable without Taught.
+- **Nothing about you, your code or your memory is sent anywhere else. No telemetry.** Once a day, Taught fetches one small public file from this repo's releases to learn whether a newer version exists. Nothing from your machine is sent with that request, and `taught update-check off` turns it off.
+- **Your code repos stay clean.** Inside a repo, Taught writes only files it creates, and tells git to ignore them. A committed `AGENTS.md` or `CLAUDE.md` is never touched.
+- **`taught uninstall` takes it all back out**, and keeps your memory repo.
+
+<details>
+<summary><strong>Exactly what Taught changes on your machine</strong></summary>
+
+<br>
 
 - A block between `<!-- taught:begin … -->` markers in `~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md` and `~/.gemini/GEMINI.md`. Nothing outside the markers is touched; a copy of each file as it was is kept in `~/.taught-local/backups/`.
 - In a folder that holds a project's repos: the same kind of block in `CLAUDE.md` and `AGENTS.md`.
@@ -46,6 +115,27 @@ Then work as usual. When you correct an agent, it records the rule with `taught 
 - Your memory lives in `~/.taught` and your memory repo, plus anything you keep on this laptop only or in a separate location you attach (`~/.taught-local`). Nothing about you, your code or your memory is sent anywhere else. No telemetry.
 - Once a day, Taught asks GitHub whether a newer version exists, by fetching one small public file from this repo's releases. Nothing from your machine is sent with that request. GitHub's download count for that file is the only usage figure Taught's author gets: roughly how many devices run it. Turn it off on a device with `taught update-check off`.
 - In a repo you set to **Off**, Taught writes nothing at all.
+
+</details>
+
+## For a team
+
+A team shares a project's **rules, guidelines and constraints**, not context. Each person's sessions and personal rules stay their own.
+
+- **One project, one shared repo.** A private git repo that all of you can write to holds that project's rules, and every teammate's agents get them.
+- **Nothing of yours is published without your yes.** Removing the project on your laptop doesn't take it from the others.
+- **You're told what teammates change**, by name, at your next sync and in `taught ui`.
+- **Review, if you want a gate.** An admin of the repo turns it on once. A rule then reaches the others only after an admin approves it, in Taught or as a pull request.
+
+See [Sharing a project's memory with your team](GETTING-STARTED.md#sharing-a-projects-memory-with-your-team). Everyone on the team should run the same, latest beta.
+
+## What works today
+
+- **Agents:** Claude Code, Codex, Cursor and Antigravity. Gemini CLI is untested. Any other agent that reads `AGENTS.md` gets project memory.
+- **Systems:** macOS is what Taught is built and tested on. Linux is expected to work but is little tested, and Windows is untested.
+- **Git hosts:** Taught uses plain git, and GitHub is the only host it has been run against.
+
+Details are in the [FAQ](FAQ.md#which-agents-systems-and-git-hosts-work).
 
 ## Update
 
@@ -67,4 +157,4 @@ npm uninstall -g taught
 
 Post on the [issues page](https://github.com/ajeetsk/taught-releases/issues/new/choose). `taught feedback` copies a setup report (versions and checks, never your memory) to paste into the form. Issues are public: describe your rules and projects generically.
 
-This is an invite-only beta: you may share it with people on your own team, but not beyond. See TERMS.md.
+This is an invite-only beta: you may share it with people on your own team, but not beyond. See [TERMS.md](TERMS.md).
