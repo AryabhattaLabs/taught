@@ -19,7 +19,7 @@ Wondering how this differs from your own git repo and a cron job, or what protec
 ## 1. Install and set up (5 minutes)
 
 ```bash
-npm i -g https://github.com/ajeetsk/taught-releases/releases/latest/download/taught.tgz
+npm i -g https://github.com/AryabhattaLabs/taught/releases/latest/download/taught.tgz
 
 taught setup --remote git@github.com:you/taught-memory.git
 ```
@@ -94,7 +94,7 @@ Then run `taught ui` to see the rule, which agent recorded it and when (see [Man
 On the second machine, install Taught, then run the same setup with the **same memory repo**:
 
 ```bash
-npm i -g https://github.com/ajeetsk/taught-releases/releases/latest/download/taught.tgz
+npm i -g https://github.com/AryabhattaLabs/taught/releases/latest/download/taught.tgz
 taught setup --remote <the same memory repo>
 ```
 
@@ -300,7 +300,7 @@ taught doctor     # health check
 Update by running the install command again. `taught --version` shows the version you have; `taught doctor`, `taught status` and a sync you run yourself say when a newer one exists. **Update every laptop that uses your memory repo together:** a newer version can change the memory's format, and an older version then stops with an error until it is updated too, so that it can't undo what the newer one did. Then run `taught doctor`: if a newer version needs something set up again (for example a new Claude Code hook), it says so, and `taught setup` with no options adds it, keeping your settings.
 
 ```bash
-npm i -g https://github.com/ajeetsk/taught-releases/releases/latest/download/taught.tgz
+npm i -g https://github.com/AryabhattaLabs/taught/releases/latest/download/taught.tgz
 ```
 
 Uninstall:
@@ -323,7 +323,7 @@ Before Taught first changes a file of yours, it keeps a copy in `~/.taught-local
 
 ## Tell us how it went
 
-This is what the beta is for. Post on the [issues page](https://github.com/ajeetsk/taught-releases/issues/new/choose). It has two forms: **Something went wrong** and **Feedback**. Most useful to us:
+This is what the beta is for. Post on the [issues page](https://github.com/AryabhattaLabs/taught/issues/new/choose). It has two forms: **Something went wrong** and **Feedback**. Most useful to us:
 
 1. **Did a correction reach another agent or laptop?** What did you teach, and where did it show up (or not)?
 2. **Anything confusing in setup**, or anything Taught did that you didn't expect.
@@ -340,4 +340,4 @@ It copies a setup report to your clipboard: versions and checks, never your memo
 
 **Issues are public.** Describe your rules and projects generically ("a rule about our API", "a work repo"). Don't paste memory content, client names or private repo names.
 
-This is an invite-only beta: you may share it with people on your own team, but not beyond. See [TERMS.md](TERMS.md).
+This is a free beta, open to anyone: you may share the install link with whoever wants to try it. See [TERMS.md](TERMS.md).

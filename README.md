@@ -16,8 +16,8 @@
 <p align="center">
   <a href="GETTING-STARTED.md"><strong>Getting started</strong></a> ·
   <a href="FAQ.md">FAQ</a> ·
-  <a href="https://github.com/ajeetsk/taught-releases/releases">Releases</a> ·
-  <a href="https://github.com/ajeetsk/taught-releases/issues/new/choose">Feedback</a>
+  <a href="https://github.com/AryabhattaLabs/taught/releases">Releases</a> ·
+  <a href="https://github.com/AryabhattaLabs/taught/issues/new/choose">Feedback</a>
 </p>
 
 <p align="center"><sub>Free beta · macOS · rules, not chat history · your own repo, no Taught account · no telemetry</sub></p>
@@ -37,7 +37,7 @@ Each agent keeps its own memory, on one machine. So you teach the same thing aga
 You need macOS, Node 20+, git, and an empty **private** GitHub repo for your memory (for example `you/taught-memory`).
 
 ```bash
-npm i -g https://github.com/ajeetsk/taught-releases/releases/latest/download/taught.tgz
+npm i -g https://github.com/AryabhattaLabs/taught/releases/latest/download/taught.tgz
 taught setup --remote git@github.com:you/taught-memory.git
 taught doctor
 ```
@@ -142,7 +142,7 @@ Details are in the [FAQ](FAQ.md#which-agents-systems-and-git-hosts-work).
 Run the install command again: it always fetches the latest beta. `taught --version` shows which one you have, and `taught doctor`, `taught status` and a sync you run yourself say when a newer one exists.
 
 ```bash
-npm i -g https://github.com/ajeetsk/taught-releases/releases/latest/download/taught.tgz
+npm i -g https://github.com/AryabhattaLabs/taught/releases/latest/download/taught.tgz
 ```
 
 ## Undo
@@ -155,6 +155,6 @@ npm uninstall -g taught
 
 ## Feedback
 
-Post on the [issues page](https://github.com/ajeetsk/taught-releases/issues/new/choose). `taught feedback` copies a setup report (versions and checks, never your memory) to paste into the form. Issues are public: describe your rules and projects generically.
+Post on the [issues page](https://github.com/AryabhattaLabs/taught/issues/new/choose). `taught feedback` copies a setup report (versions and checks, never your memory) to paste into the form. Issues are public: describe your rules and projects generically.
 
-This is an invite-only beta: you may share it with people on your own team, but not beyond. See [TERMS.md](TERMS.md).
+This is a free beta, open to anyone: you may share the install link with whoever wants to try it. See [TERMS.md](TERMS.md).
