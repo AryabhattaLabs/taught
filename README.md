@@ -37,7 +37,7 @@ Each agent keeps its own memory, on one machine. So you teach the same thing aga
 You need macOS, Node 20+, git, and an empty **private** GitHub repo for your memory (for example `you/taught-memory`).
 
 ```bash
-npm i -g https://github.com/AryabhattaLabs/taught/releases/latest/download/taught.tgz
+npm i -g taught
 taught setup --remote git@github.com:you/taught-memory.git
 taught doctor
 ```
@@ -139,10 +139,10 @@ Details are in the [FAQ](FAQ.md#which-agents-systems-and-git-hosts-work).
 
 ## Update
 
-Run the install command again: it always fetches the latest beta. `taught --version` shows which one you have, and `taught doctor`, `taught status` and a sync you run yourself say when a newer one exists.
+Run `npm i -g taught@latest`: it always fetches the latest beta. `taught --version` shows which one you have, and `taught doctor`, `taught status` and a sync you run yourself say when a newer one exists.
 
 ```bash
-npm i -g https://github.com/AryabhattaLabs/taught/releases/latest/download/taught.tgz
+npm i -g taught@latest
 ```
 
 ## Undo
