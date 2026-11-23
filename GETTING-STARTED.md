@@ -19,7 +19,7 @@ Wondering how this differs from your own git repo and a cron job, or what protec
 ## 1. Install and set up (5 minutes)
 
 ```bash
-npm i -g https://github.com/AryabhattaLabs/taught/releases/latest/download/taught.tgz
+npm i -g taught
 
 taught setup --remote git@github.com:you/taught-memory.git
 ```
@@ -94,7 +94,7 @@ Then run `taught ui` to see the rule, which agent recorded it and when (see [Man
 On the second machine, install Taught, then run the same setup with the **same memory repo**:
 
 ```bash
-npm i -g https://github.com/AryabhattaLabs/taught/releases/latest/download/taught.tgz
+npm i -g taught
 taught setup --remote <the same memory repo>
 ```
 
@@ -297,10 +297,10 @@ taught doctor     # health check
 
 ## Update and uninstall
 
-Update by running the install command again. `taught --version` shows the version you have; `taught doctor`, `taught status` and a sync you run yourself say when a newer one exists. **Update every laptop that uses your memory repo together:** a newer version can change the memory's format, and an older version then stops with an error until it is updated too, so that it can't undo what the newer one did. Then run `taught doctor`: if a newer version needs something set up again (for example a new Claude Code hook), it says so, and `taught setup` with no options adds it, keeping your settings.
+Update with `npm i -g taught@latest`. `taught --version` shows the version you have; `taught doctor`, `taught status` and a sync you run yourself say when a newer one exists. **Update every laptop that uses your memory repo together:** a newer version can change the memory's format, and an older version then stops with an error until it is updated too, so that it can't undo what the newer one did. Then run `taught doctor`: if a newer version needs something set up again (for example a new Claude Code hook), it says so, and `taught setup` with no options adds it, keeping your settings.
 
 ```bash
-npm i -g https://github.com/AryabhattaLabs/taught/releases/latest/download/taught.tgz
+npm i -g taught@latest
 ```
 
 Uninstall:
