@@ -123,7 +123,7 @@ Don't put keys in rules. If one gets in, delete the rule and replace the key: th
 
 ## What does it change on my machine and in my repos?
 
-The full list is in the [README](README.md#what-taught-changes-on-your-machine). In short:
+The full list is in the [README](README.md#yours-and-easy-to-undo), under "Exactly what Taught changes on your machine". In short:
 
 - a marked block in each agent's own file, and in the folder that holds a project's repos;
 - inside a repo, only files Taught created, which git is told to ignore;
@@ -163,4 +163,4 @@ Your memory repo is kept. It is plain markdown, one file per rule, readable with
 
 ## What does it cost?
 
-The beta is free, and by invitation. What comes after the beta isn't decided yet. Either way, your memory stays in your own repo as plain files.
+The beta is free, and open to anyone. What comes after the beta isn't decided yet. Either way, your memory stays in your own repo as plain files.
