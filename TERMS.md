@@ -1,6 +1,6 @@
 # Taught beta: terms
 
-Copyright (c) 2026 Ajeet. All rights reserved.
+Copyright (c) 2026 Aryabhatta Labs. All rights reserved.
 
 Anyone may install and use this beta of Taught free of charge, for evaluating it and giving feedback.
 You may share the install link with anyone who wants to try it. Please don't publish or redistribute the package
