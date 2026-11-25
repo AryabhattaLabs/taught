@@ -2,12 +2,12 @@
   <img src="images/taught-mark.svg" width="72" height="72" alt="">
 </p>
 
-<h1 align="center">Taught: shared memory for Claude Code, Codex, Cursor and Antigravity</h1>
+<h1 align="center">Taught: shared memory for Claude Code, Codex and Cursor</h1>
 
 <p align="center"><strong>Correct one agent once. Every agent on every machine remembers.</strong></p>
 
 <p align="center">
-  The rules you teach Claude Code, Codex, Cursor and Antigravity,<br>
+  The rules you teach Claude Code, Codex and Cursor,<br>
   kept in a private git repo you own and given to all of them, on every laptop.
 </p>
 
