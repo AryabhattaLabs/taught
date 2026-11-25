@@ -2,7 +2,7 @@
   <img src="images/taught-mark.svg" width="72" height="72" alt="">
 </p>
 
-<h1 align="center">Taught</h1>
+<h1 align="center">Taught: shared memory for Claude Code, Codex, Cursor and Antigravity</h1>
 
 <p align="center"><strong>Correct one agent once. Every agent on every machine remembers.</strong></p>
 
