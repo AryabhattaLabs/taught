@@ -4,6 +4,12 @@
 
 <h1 align="center">Taught: shared memory for Claude Code, Codex, Cursor and Antigravity</h1>
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/taught"><img src="https://img.shields.io/npm/v/taught" alt="npm version"></a>
+  <img src="https://img.shields.io/badge/node-20%2B-339933" alt="Node 20+">
+  <img src="https://img.shields.io/badge/platform-macOS-lightgrey" alt="macOS">
+</p>
+
 <p align="center"><strong>Correct one agent once. Every agent on every machine remembers.</strong></p>
 
 <p align="center">
